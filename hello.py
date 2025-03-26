@@ -3,17 +3,15 @@ import requests
 import json
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
 
-def get_meme():
-    url = "https://meme-api.herokuapp.com/gimme"
-    response = json . loads(requests.request("GET ,url").text)
-    meme_large= response["preview"][-2]
-    subreddit=response["subreddit"]
-    return meme_large, subreddit
 
 
 @app.route("/")
 def index():
-    meme_pic,subreddit = get_meme()
-    return render_template("meme_index.html",meme_pic=meme_pic,subreddit=subreddit)
+   return "<h1>Change </h1>"
+
+@app.route('/hello')
+def hello():
+    return 'Hello, World'
