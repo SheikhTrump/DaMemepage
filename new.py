@@ -1,3 +1,4 @@
+###DAmeme page server is unable because the api is not free anymore
 from flask import Flask , render_template
 import requests
 import json

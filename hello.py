@@ -7,10 +7,10 @@ app.config['DEBUG'] = True
 
 
 
-
-@app.route("/")
-def index():
-   return render_template("home.html")
+@app.route('/')
+@app.route('/home')
+def home_page():
+    return render_template('home.html')
 '''
 @app.route('/hello')
 def hello():
