@@ -1,16 +1,18 @@
 from flask import Flask , render_template
-import requests
-import json
-
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
+
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///market.db'
 
+
 db = SQLAlchemy(app)
+
+
+
 '''
 class Item(db.Model):
     id=db.Column(db.Integer(),primary_key=True)
@@ -28,7 +30,8 @@ class Item(db.Model):
     description = db.Column(db.String(length=1024), nullable=False, unique=True)
 
     
-
+    def __repr__(self):
+        return f"Item {self.name}"
 
 
 @app.route('/')
@@ -57,7 +60,4 @@ def market_page():
     return render_template("market.html",items=items)
 
 
-if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-    app.run(debug=True)
+
